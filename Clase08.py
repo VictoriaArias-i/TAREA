@@ -103,9 +103,108 @@
 # El precio de la academia es de 300.000$ y dura 6 meses.
 # El programa debe solicitar el nombre del estudiante, el nivel socioeconomico y la nota obtenida.
 
-print("Bienvenido usuario, para revisar si tiene un beneficio dentro de la academia responda las siguientes preguntas")
+ef prog():
+    print("Bienvenido usuario, para revisar si tiene un beneficio dentro de la academia responda las siguientes preguntas")
+    name= input("Primero que nada, ¿Cuál es su nombre? ")
+    print("        __________________")
+    print(f"Le recuerdo, {name}, que el precio de la academia es de 300.000$ y dura 6 meses.\n        __________________")
+    print("Teniendo en cuenta que el nivel socioeconomico se basa en en una escala de la F a la A, donde la \"F\" es el nive más bajo, y la \"A\" es el más alto.")
+    nivel_so(name)
 
-op= input("Ingrese en qué nivel socioeconomico se encuentre entre las diferentes opciones:\n 1-. F\n 2-. D \n 3-. C \n 4-. B \n 5-. A \n")
+def salida(name):
+    print(f"Muchas gracias, {name}, por ocupar nuestra aplicación, nos vemos pronto.")
 
-if op == "1":
-    print("Se en")
+def nivel_so(name):
+    opc= input(f"{name} Ingrese en qué nivel socioeconomico se encuentre entre las diferentes opciones:\n 1-. F\n 2-. D \n 3-. C \n 4-. B \n 5-. A \n")
+    while True:
+        if opc == "1":
+            decil_1(name)
+            break
+        elif opc == "2":
+            decil_2(name)
+            break
+        elif opc == "3":
+            decil_3(name)
+            break
+        elif opc == "4":
+            decil_4(name)
+            break
+        elif opc == "5":
+            decil_5(name)
+            break
+        else:
+             salida(name)
+        break
+
+def decil_1(name):
+        print(f"{name}, se encuentra en el nivel F. Para poder recibir el descuento del 100%, debe tener un promedio de 7.")
+        print("             __________________")
+        op2= input("¿Tiene un promedio de 7? \na)Sí \nb)No")
+        if op2 == "a":
+            print("Felicitaciones, tiene un descuento del 100%\nEl precio de la academia ahora será de 0$")
+        elif op2 == "b":
+            print("No tiene el descuento del 100%")
+            salida(name)
+        else:
+            print("No es valido lo que ingresaste, intenta ingresar tus datos de nuevo.")  
+            nivel_so(name) 
+def decil_2(name):
+        print(f"{name}, encuentra en el nivel D. Para poder recibir el descuento del 100%, debe tener un promedio de 7.")
+        print("             __________________")
+        op2= input("¿Tiene un promedio tiene? \na)De 7 \nb)Sobre 6 \nc) Otro")
+        if op2 == "a":
+            print("Felicitaciones, tiene un descuento del 100%\n El precio de la academia ahora será de 0$")
+            salida(name)           
+        elif op2 == "c":
+            print("No tiene el descuento del 100%")
+            salida(name)
+        elif op2 == "b":
+            print("Si es que tiene un promedio de 6, tiene un descuento del 30%")
+            res= 300000 * 0.3
+            print(f"Felicitaciones, tiene un descuento del 30%, el precio de la academia ahora tendrá un descuento de {res}$")
+            salida(name)
+        else:
+            print("No es valido lo que ingresaste, intenta ingresar tus datos de nuevo.")  
+            nivel_so(name) 
+def decil_3(name):
+        print(f"{name}, se encuentra en el nivel C. Para poder recibir el descuento del 40%, debe tener un promedio de 7.")
+        print("             __________________")
+        op2= input("¿Tiene un promedio de 7? \na)Sí \nb)No")
+        if op2 == "a":
+            print("Felicitaciones, tiene un descuento del 100%\n El precio de la academia ahora será de 0$")
+            salida(name)
+        elif op2 == "b":
+            print("No tiene el descuento del 100%")
+            salida(name)
+        else:
+            print("No es valido lo que ingresaste, intenta ingresar tus datos de nuevo.")  
+            nivel_so(name) 
+
+def decil_4(name):
+        print(f"{name}, se encuentra en el nivel B. Para poder recibir el descuento del 30%, debe tener un promedio de 6.")
+        print("             __________________")
+        op2= input("¿Qué promedio tiene? \na)Sobre 6 \nb)Sobre 5 \nc) Más bajo")
+        if op2 == "a":
+            res= 300000 * 0.3
+            print(f"Felicitaciones, tiene un descuento del 30%, el precio de la academia ahora tendrá un descuento de  {res}$")
+            salida(name)
+        elif op2 == "b":
+            res= 300000 * 0.2
+            print(f"Felicitaciones, tiene un descuento del 20%, el precio de la academia ahora tendrá un descuento de {res}$")
+            salida(name)
+        elif op2 == "c":
+            print("No tiene el descuento del 100%")
+            salida(name)
+        else:
+            print("No es valido lo que ingresaste, intenta ingresar tus datos de nuevo.")  
+            nivel_so(name)
+
+def decil_5(name):
+        print(f"{name}, se encuentra en el decil más alto. En este momento no tenemos ningun beneficio para usted.")
+        re=input(f"¿{name}, desea volver a intentarlo? \na)si o \nb)no")
+        if re == "a":
+            prog()
+        elif re == "b":
+            salida(name)
+
+prog()
