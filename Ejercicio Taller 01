@@ -1,0 +1,81 @@
+"""Problemas Taller de Fundamentos 1"""
+
+#       Problema 1
+# Sistema de descuentos para compras en linea Enunciado: Una tienda en linea ofrece productos con descuento dependiendo de varios factores. 
+# El cliente puede ser nuevo o frecuente, y dependiendo de esto se aplicará un descuento sobre el total de su compra. 
+# Además, si el cliente compra más de 5 productos, se le aplicará un descuento adicional. 
+# Sin embargo, el descuento total no puede exceder un limite máximo del 25% del total de la compra. 
+
+# Objetivo: Desarrolla un programa en Python que calcule el monto final de la compra, aplicando los descuento según el tipo de cliente, 
+#la cantidad de productos y el monto total de la compra. 
+
+# Condiciones: 
+# 1. El programa debe solicitar al usuario el número de productos que compro. 
+# 2. El programa debe solicitar al usuario el tipo de cliente (nuevo o frecuente). 
+# 3. Si el cliente es nuevo, ofrece un 5% de descuento sobre el total de compra. 
+# 4. Si el cliente es frecuente, ofrece un 10% de descuento sobre el total de la compra. 
+# 5. Si el cliente compra más de 5 productos, aplica un descuento adicional del 3% sobre el total de la compra. 
+# 6. El descuento total no puede superar el 25% del valor total de la compra. 
+# 7. El programa debe calcular y mostrar el valor total con el descuento aplicado y el monto del descuento.
+
+def inicio_prog():
+    print("¡Bienvenid@ a nuetra tienda online!")
+    compras_cant()
+    
+def compras_cant():
+    compras=int(input("¿Cuantos productos tiene en su carrito?\n"))
+
+    if compras in [1,2,3,4]:
+        print("Si agregas hasta 5 objetos podemos darte un descuentro de 3% dentro de su compra.")
+        respuesta=input("¿Quieres agregar más objetos al carrito?\nSí\n No\n ")
+        respuesta=respuesta.lower()
+        if respuesta== "si":
+            inicio_prog()
+        elif respuesta== "no":
+            cliente(compras)
+        else:
+            print("Respuesta invalida.")
+            compras_cant()
+
+    elif compras >= 5:
+        print("Por tener 5 o más objetos en tu carrito tienes un 3% de descuento en el total de tu compra.")
+        cliente(compras)
+
+def cliente(compras):
+    user=input("¿Es usted un cliente frecuente o uno nuevo?\n")
+    user=user.lower()
+
+    if user== "nuevo":
+        print("Por ser un cliente nuevo le ofrecemos un 5% de descuento sobre el total de su compra.")
+        calculo(compras,user)
+    elif user == "frecuente":
+        print("Al ser un cliente frecuente tiene un 10% de descuentro sobre el total de su compra.")
+        calculo(compras,user)
+    else:
+        print("Respuesta invalida.")
+        cliente(compras)
+
+def calculo(compras,user):
+    precio_producto= 10000
+    desc= 0
+
+    if user == "nuevo":
+        desc += 0.05
+    elif user == "frecuente":
+        desc += 0.10
+    
+    if compras >=5:
+        desc += 0.03
+
+    if desc> 0.25:
+        desc = 0.25
+
+    total_sin_desc = compras * precio_producto
+    monto_desc = total_sin_desc * desc
+    total_con_desc = total_sin_desc - monto_desc
+
+    print(f"El total del descuento es: {monto_desc}")
+    print(f"El total del monto sin el descuento es: {total_sin_desc}")
+    print(f"El total del mondo con tl descuento aplicado {total_con_desc}")
+
+inicio_prog()
