@@ -1,0 +1,158 @@
+"""Problemas Taller de Fundamentos  2"""
+
+# #Problema 2: Juego de Adivinanza con Rango Dinámico y Pistas Mejoradas
+
+# #Enunciado:
+# #Estás desarrollando un juego interactivo donde el usuario tiene que adivinar un número secreto aleatoriamente dentro de un rango de números determinado.
+# El jugador puede seleccionar entre tres niveles de dificultad: fácil, medio o dificil. 
+# Dependiendo del nivel de dificultad elegido, el rango de números variará, y el jugador tendrá un máximo de 3 intentos para adivinar el número.
+
+# El juego debe proporcionar pistas después de cada intento, indicando si el número es mayor o menor que el intento del jugador. 
+# Además, después de 1 intento fallido, el juego debe ofrecer una pista adicional indicando qué tan cerca está el número secreto del último intento.
+
+# Objetivo:
+# Desarrolla un programa en Python que permita al jugador adivinar un número secreto generado aleatoriamente dentro de un rango dinámico, 
+# el jugador podrá realizar el número secreto generado aleatoriamente dentro de un rango dinámico. 
+# El jugador podrá realizar hasta 3 intentos, con pistas mejoradas para ayudarlo a encontrar el número.
+
+# Condiciones:
+# 1. El programa debe solicitar al jugador que seleccione un nivel de dificultad:
+# Fácit: el número secreto estará entre 1 y 10.
+# Medio: el número secreto estará entre 1 y 20..
+# Dificil: el número secreto estará entre 1 y 30.
+# 2. El programa debe generar un número secreto aleatorio dentro del rango correspondiente según el nivel de dificultad seleccionado.
+# 3. El jugador tiene un máximo de 3 intentos para adivinar el número.
+# 4. Después de cada intento, el programa debe mostrar una pista indicando si el número secreto es mayor o menor que el intento del jugador.
+# 5. Después de 1 intento fallido, el programa debe proporcionar una pista adicional indicando cuál de los intentos anterior está más 
+# cerca del número secreto.
+# 6. Si el jugador adivina el número correctamente antes de los 3 intentos, el programa debe felicitarto.
+# 7. Si el jugador no adivina el número en 3 intentos, el programa debe mostrar el número secreto final.
+
+import random
+
+def inicio():
+    print("Bienvenid@ usuario al juego del número aleatorio.")
+    dificult = input("¿Cuál es el nivel de dificultad con el que quieres jugar?\nFácil\nMedio\nDifícil\n")
+    dificult = dificult.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").lower()
+
+    if dificult == "facil":
+        print("Has escogido la dificultad fácil")
+        facil()
+    elif dificult == "medio":
+        print("Has escogido la dificultad media")
+        medio()
+    elif dificult == "dificil":
+        print("Has escogido la dificultad difícil")
+        dificil()
+    else:
+        print("Oh no, algo ha salido mal, inténtalo de nuevo.")
+        inicio()
+
+
+def facil():
+    print("Esta dificultad hace que averigues el número entre 1 a 10.")
+    intentos = 0
+    num_aleat = random.randint(1, 10)
+
+    while intentos < 3:
+        resp = int(input("Ingresa aquí tu respuesta: "))
+
+        if resp < 1 or resp > 10:
+            print(f"Uh oh, te has salido del rango. Este intento no cuenta.")
+            continue
+
+        intentos += 1
+
+        if resp == num_aleat and intentos == 1:
+            print(f"¡Muy bien! Le has acertado al primer intento. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp == num_aleat:
+            print(f"¡Muy bien! Le has acertado. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp < num_aleat:
+            print(f"Oh, el número aleatorio es más alto. Este es tu intento número {intentos}.")
+        elif resp > num_aleat:
+            print(f"Oh, el número aleatorio es más bajo. Este es tu intento número {intentos}.")
+
+    print(f"Te has quedado sin intentos. El número era {num_aleat}.")
+    volver()
+
+
+def medio():
+    print("Esta dificultad hace que averigues el número entre 1 a 20.")
+    intentos = 0
+    num_aleat = random.randint(1, 20)
+
+    while intentos < 3:
+        resp = int(input("Ingresa aquí tu respuesta: "))
+
+        if resp < 1 or resp > 20:
+            print(f"Uh oh, te has salido del rango. Este intento no cuenta.")
+            continue
+
+        intentos += 1
+
+        if resp == num_aleat and intentos == 1:
+            print(f"¡Muy bien! Le has acertado al primer intento. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp == num_aleat:
+            print(f"¡Muy bien! Le has acertado. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp < num_aleat:
+            print(f"Oh, el número aleatorio es más alto. Este es tu intento número {intentos}.")
+        elif resp > num_aleat:
+            print(f"Oh, el número aleatorio es más bajo. Este es tu intento número {intentos}.")
+
+    print(f"Te has quedado sin intentos. El número era {num_aleat}.")
+    volver()
+
+
+def dificil():
+    print("Esta dificultad hace que averigues el número entre 1 a 50.")
+    intentos = 0
+    num_aleat = random.randint(1, 50)
+
+    while intentos < 5:
+        resp = int(input("Ingresa aquí tu respuesta: "))
+
+        if resp < 1 or resp > 50:
+            print(f"Uh oh, te has salido del rango. Este intento no cuenta.")
+            continue
+
+        intentos += 1
+
+        if resp == num_aleat and intentos == 1:
+            print(f"¡Increíble! Le has acertado al primer intento. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp == num_aleat:
+            print(f"¡Muy bien! Le has acertado. El número era {num_aleat}.")
+            volver()
+            return
+        elif resp < num_aleat:
+            print(f"Oh, el número aleatorio es más alto. Intento número {intentos}.")
+        elif resp > num_aleat:
+            print(f"Oh, el número aleatorio es más bajo. Intento número {intentos}.")
+
+    print(f"Te has quedado sin intentos. El número era {num_aleat}.")
+    volver()
+
+
+def volver():
+    print("El juego ha terminado.")
+    vol = input("¿Quieres volver a jugar?\nSí\nNo\n")
+    vol = vol.replace("ó", "o").replace("í", "i").lower()
+    if vol == "si":
+        inicio()
+    elif vol == "no":
+        print("¡Nos vemos!")
+    else:
+        print("Oh no, algo ha salido mal, inténtalo de nuevo.")
+        volver()
+
+
+inicio()
