@@ -36,3 +36,14 @@ for i, numero in enumerate(numero):
     print(f"Se ingresa {num_no_primo} numero {"s" if num_no_primo > 1 else ""} No primo")
 
 #EJERCICIO DE PRUEBA
+
+
+#El usuario debe ingresar el registro de una temperatura en un rango de (-50 a 50 grados centrigados)° dado que el usuario puede ingresar cualquier dato (Incluso cadena de texto), 
+# se puede usar manejo de excepción para evitar que el progrma se detenga.
+#   1-. Si el dato ingresado no es num enter(int) debe decir: "ERROR: Debe ingresar un numero entero valido y repetir hasta que se valido" 
+#   2-. Si el user ingresa un numero entero fuera del rango debe decir: "ERROR: Temperatura fuera del rango permitid mostrar el rango permitido" hasta que el user ingrese datos validos"
+#   3-. Si el user ingresa los datos correctamente "Temperatura registrada exitosamente"
+#   4-. Deber tener una opcion para salir del programa con un menajse que indique "Cierre del programa, hasta luego".
+
+def inicio():
+    print("Holiwis, vamos a agregar el registro de la temperatura")
