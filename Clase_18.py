@@ -39,15 +39,24 @@ ejercicio_1()
 # y, por ultimo, consultar salida con mensaje de despedida. 
 
 def ejericico_2():
-    print("Bienvenido al totem del cine.")
+        print("Bienvenido al totem del cine.")
 
     with open("cine.txt", "w") as archivo:
         archivo.write("Quedan 20 asientos libres.\n")
     asientos= 20
 
     with open("cine.txt", "a") as archivo:
-        cant_entradas= int(input("¿Cuántas entradas desea?:\n"))
-
+        while True:
+            try:
+                cant_entradas= int(input("¿Cuántas entradas desea?:\n"))
+            except:
+                print("OH noooo")
+                continue
+            if cant_entradas <= 0:
+                print("NOOOOO")
+                continue
+            break
+    
         for i in range(cant_entradas):
             print(f"Entrada {i+1}:\n")
 
