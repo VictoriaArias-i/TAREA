@@ -38,30 +38,28 @@ ejercicio_1()
 # ver cuantas entradas quedan, comprar una cantidad de entradas de acuerdo a la cantidad de usuarios solicitada, permitir consultar disponibilidad de la sala
 # y, por ultimo, consultar salida con mensaje de despedida. 
 
-def ejericico_2():
-        print("Bienvenido al totem del cine.")
-
-    with open("cine.txt", "w") as archivo:
-        archivo.write("Quedan 20 asientos libres.\n")
-    asientos= 20
-
-    with open("cine.txt", "a") as archivo:
-        while True:
-            try:
-                cant_entradas= int(input("¿Cuántas entradas desea?:\n"))
-            except:
-                print("OH noooo")
-                continue
-            if cant_entradas <= 0:
-                print("NOOOOO")
-                continue
-            break
+print("Bienvenido al menu del cine.")
+entradas_disp=20
+while True:
+    try:
+        opc=int(input("¿Qué desea hacer hoy?\n1-. Ver las entradas disponibles\n2-. Comprar la entradas\n3-. Consultar disponibilidad de sala.\n4-. Salir\n"))
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+        continue
     
-        for i in range(cant_entradas):
-            print(f"Entrada {i+1}:\n")
-
-            archivo.write(f"Entrada {i+1}:\n")
-        
-        total= asientos - cant_entradas
-        print(f"En este momento quedan {total} de asientos disponibles.")
-        print("Gracias por su compra.")
+    if opc== 1:
+        print(f"En este momento tenemos {entradas_disp} entradas disponibles para la pelicula.")
+    elif opc==2:
+        comp_entra=int(input("¿Cuantas entradas desea comprar?"))
+        res_entra= entradas_disp -comp_entra
+        print(f"Ahora solo quedan {res_entra} entradas.")
+    elif opc==3:
+        if entradas_disp > 0:
+            print("Aún quedan asientos que rellenar.")
+        else: 
+            print("No quedan asientos que comprar.")
+    elif opc==4: 
+        print("Adios, nos vemos pronto.")
+        break
+    else:
+        print("Oh no, ha habido un error, intentalo de nuevo.")
